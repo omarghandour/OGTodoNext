@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model todos {
+  id         String  @id @db.VarChar(255)
+  user_email String? @db.VarChar(255)
+  title      String? @db.VarChar(300)
+  progress   Int?
+  date       String? @db.VarChar(300)
+  todayy     Int?
+}
+
+model tryhard {
+  id         String  @id @db.VarChar(255)
+  user_email String? @db.VarChar(255)
+  title      String? @db.VarChar(300)
+  progress   Int?
+  date       String? @db.VarChar(300)
+}
+
+model users {
+  email           String  @id @db.VarChar(255)
+  hashed_password String? @db.VarChar(255)
+  streak          Int?    @default(0)
+  today           Int?
+}
