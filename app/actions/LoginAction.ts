@@ -22,8 +22,8 @@ export const login = async (FormData: FormData) => {
     },
   });
   console.log(passwordConfirmation);
-  const cookie = cookies().get("user");
-  if (cookie?.value === email) redirect("/");
+  // const cookie = cookies().get("user");
+  // if (cookie?.value === email) redirect("/");
   if (!hash && !passwordConfirmation) {
     return {
       error: "User not found",
