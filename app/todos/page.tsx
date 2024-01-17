@@ -1,10 +1,16 @@
 import Home from "@/components/Home";
 import React from "react";
+import { getTodos } from "../actions/Todos";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-const page = () => {
+const page = async () => {
+  const coo = cookies().get("user");
+  if (!coo) redirect("/auth");
+  const { data } = await getTodos();
   return (
     <div>
-      <Home />
+      <Home data={data} />
     </div>
   );
 };
