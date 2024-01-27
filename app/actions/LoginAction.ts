@@ -2,8 +2,6 @@
 
 import bcrypt from "bcrypt";
 import { PrismaClient } from "@prisma/client";
-import { redirect } from "next/navigation";
-import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 
 const prisma = new PrismaClient();
@@ -22,8 +20,7 @@ export const login = async (FormData: FormData) => {
     },
   });
   console.log(passwordConfirmation);
-  // const cookie = cookies().get("user");
-  // if (cookie?.value === email) redirect("/");
+
   if (!hash && !passwordConfirmation) {
     return {
       error: "User not found",
@@ -35,9 +32,7 @@ export const login = async (FormData: FormData) => {
         password as string,
         hash?.hashed_password as string
       );
-      //   console.log(match);
       if (match) {
-        // const token = jwt.sign({ email }, "token");
         cookies().set({
           name: "user",
           value: email as string,
@@ -51,7 +46,6 @@ export const login = async (FormData: FormData) => {
       };
     }
   } else {
-    // signup lpgic
     try {
       if (password === passwordConfirmation) {
         await prisma.users

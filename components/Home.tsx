@@ -69,14 +69,11 @@ const DialogDemo = () => {
                   />
                 </>
               </div>
-              {/* <DialogFooter> */}
               <Submit />
-              {/* </DialogFooter> */}
             </form>
           </DialogContent>
         </Dialog>
       </div>
-      {/* editt  */}
     </div>
   );
 };
@@ -92,11 +89,11 @@ const Home = (data: any) => {
   });
 
   return (
-    <div className="">
+    <div className="container flex h-full  flex-col mt-5">
       <Header />
 
       <DialogDemo />
-      <Tasks task={tasks} user={true} />
+      <Tasks task={tasks} />
     </div>
   );
 };

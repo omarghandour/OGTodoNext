@@ -9,7 +9,7 @@ const page = async () => {
   if (!coo) redirect("/auth");
   const { data } = await getTodos();
   return (
-    <div>
+    <div className="h-[100svh]">
       <Home data={data} />
     </div>
   );

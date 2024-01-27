@@ -1,16 +1,13 @@
 "use client";
-import React, { useTransition } from "react";
+import React from "react";
 import {
   Table,
   TableBody,
   TableCaption,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "./ui/button";
-import { editTodo } from "@/app/actions/Todos";
 import {
   Dialog,
   DialogContent,
@@ -27,7 +24,7 @@ import { useFormStatus } from "react-dom";
 import { Call1, Call3 } from "@/app/actions/Calls";
 import { Progress } from "@/components/ui/progress";
 
-const Tasks = ({ task }: any, user: boolean) => {
+const Tasks = ({ task }: any) => {
   const Edit = () => {
     const { pending } = useFormStatus();
     return (
@@ -92,7 +89,7 @@ const Tasks = ({ task }: any, user: boolean) => {
     );
   };
   return (
-    <div>
+    <div className="">
       <div className=" w-2/5"></div>
       <Table className=" w-full md:w-3/4 p-5">
         <TableCaption>A list of your recent invoices.</TableCaption>
@@ -100,7 +97,10 @@ const Tasks = ({ task }: any, user: boolean) => {
         <TableBody>
           {task?.map((task: any) => {
             return (
-              <TableRow key={task.id} className="flex flex-col md:flex-row p-5">
+              <TableRow
+                key={task.id}
+                className="flex flex-col md:flex-row p-5 items-center"
+              >
                 <TableCell
                   className={`font-medium w-1/2 ${
                     task.progress === 100 ? "line-through text-gray-500" : ""
@@ -111,16 +111,15 @@ const Tasks = ({ task }: any, user: boolean) => {
                 <TableCell className=" w-full md:w-1/4">
                   <Progress value={task.progress} />
                 </TableCell>
-                {user ? (
-                  <>
-                    <TableCell className="text-center p-0 ">
-                      <EditUI taskID={task.id} />
-                    </TableCell>
-                    <TableCell className="p-0" onClick={() => Call3(task.id)}>
-                      <Delete />
-                    </TableCell>
-                  </>
-                ) : null}
+
+                <>
+                  <TableCell className="text-center p-0 ">
+                    <EditUI taskID={task.id} />
+                  </TableCell>
+                  <TableCell className="p-0" onClick={() => Call3(task.id)}>
+                    <Delete />
+                  </TableCell>
+                </>
               </TableRow>
             );
           })}
