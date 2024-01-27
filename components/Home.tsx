@@ -21,6 +21,7 @@ import Header from "./Header";
 import { useFormStatus } from "react-dom";
 import Tasks from "./Tasks";
 import { Call2 } from "@/app/actions/Calls";
+import Link from "next/link";
 const client = async (FormData: FormData) => {
   Call2(FormData);
 };
@@ -91,7 +92,12 @@ const Home = (data: any) => {
   return (
     <div className="container flex h-full  flex-col mt-5">
       <Header />
-
+      <Link
+        className=" mt-5 mb-5 bg-black p-2 text-white rounded-md w-[7%] text-center hover:bg-gray-800"
+        href={"/"}
+      >
+        Home
+      </Link>
       <DialogDemo />
       <Tasks task={tasks} />
     </div>

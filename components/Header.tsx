@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 import { logout } from "@/app/actions/Logout";
 import { useRouter } from "next/navigation";
 import { ModeToggle } from "./ui/DLMode";
-import Link from "next/link";
 
 const Header = () => {
   const router = useRouter();
@@ -20,10 +19,10 @@ const Header = () => {
     if (resualt?.LogedOut) router.push("/auth");
   };
   return (
-    <div>
+    <div className="flex items-center justify-around">
       <ModeToggle />
 
-      <form className=" mt-2" action={client}>
+      <form className=" flex items-center justify-around mt-2" action={client}>
         <Submit />
       </form>
     </div>
