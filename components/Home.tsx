@@ -93,7 +93,7 @@ const Home = (data: any) => {
     <div className="container flex h-full  flex-col mt-5">
       <Header />
       <Link
-        className=" mt-5 mb-5 bg-black p-2 text-white rounded-md w-[7%] text-center hover:bg-gray-800"
+        className=" mt-5 mb-5 bg-black p-2 text-white rounded-md md:w-[7%] w-[23%] text-center hover:bg-gray-800"
         href={"/"}
       >
         Home

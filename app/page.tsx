@@ -4,11 +4,14 @@ import Tasks from "@/components/Tasks";
 import { cookies } from "next/headers";
 import Header from "@/components/Header";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 const prisma = new PrismaClient();
 const page = async () => {
   const cookieStore = cookies();
   const user = cookieStore.get("user");
-  const todo = cookieStore.get("user")?.value;
+  if (!user) {
+    redirect("/todos");
+  }
 
   async function HomeTodos() {
     "use server";
@@ -38,7 +41,7 @@ const page = async () => {
       >
         Todos
       </Link>
-      <Tasks task={mpp} />
+      {/* <Tasks task={mpp} /> */}
     </div>
   );
 };
